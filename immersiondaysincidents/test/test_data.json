@@ -1,0 +1,28 @@
+{
+  "profiles": {
+    "default": {
+      "accessToken": "",
+      "refreshToken": ""
+    }
+  },
+  "parameters": {
+    "parameters1": {
+      "Account": "test"
+    }
+  },
+  "conditions": {
+    "conditions1": [
+      {
+        "field": "field1",
+        "qualifier": "equals",
+        "value": "value"
+      }
+    ]
+  },
+  "data": {
+    "new_object": {
+      "Name": "Test Object",
+      "Type": "Other"
+    }
+  }
+}

@@ -1,0 +1,198 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bmc.panama</groupId>
+    <artifactId>ImmersionDaysIncidentsConnector</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+            <!--LMA:: Making sure the libraries are included in the connector BEGIN-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.maven.plugins</groupId>-->
+            <!--                <artifactId>maven-dependency-plugin</artifactId>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>copy-dependencies</id>-->
+            <!--                        <phase>prepare-package</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>copy-dependencies</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <outputDirectory>${project.build.directory}/lib</outputDirectory>-->
+            <!--                            <overWriteReleases>false</overWriteReleases>-->
+            <!--                            <overWriteSnapshots>false</overWriteSnapshots>-->
+            <!--                            <overWriteIfNewer>true</overWriteIfNewer>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                            <overWriteReleases>false</overWriteReleases>
+                            <overWriteSnapshots>false</overWriteSnapshots>
+                            <overWriteIfNewer>true</overWriteIfNewer>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>com.bmc.panama.TestingITSMConnectorConnector</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <!--LMA:: END-->
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>com.bmc.panama</groupId>
+            <artifactId>panama-connector</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--LMA:: Additional Dependencies BEGIN-->
+        <!-- LMA:: AR Dependencies -->
+        <dependency>
+            <groupId>arlibs</groupId>
+            <artifactId>arapi</artifactId>
+            <version>8.1.00</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/arapi-8.1.00.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>arlibs</groupId>
+            <artifactId>arapiext</artifactId>
+            <version>8.1.00</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/arapiext-8.1.00.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>arlibs</groupId>
+            <artifactId>arutil</artifactId>
+            <version>8.1.00</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/arutil-8.1.00.jar</systemPath>
+        </dependency>
+        <!--LMA:: END-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <!--LMA:: Dependency management BEGIN-->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+    </dependencies>
+    <!--LMA:: Dependency management BEGIN-->
+    <dependencyManagement>
+        <dependencies>
+            <!-- LMA:: AR Dependencies -->
+            <dependency>
+                <groupId>arlibs</groupId>
+                <artifactId>arapi</artifactId>
+                <version>8.1.00</version>
+                <scope>system</scope>
+                <systemPath>${project.basedir}/lib/arapi-8.1.00.jar</systemPath>
+            </dependency>
+            <dependency>
+                <groupId>arlibs</groupId>
+                <artifactId>arapiext</artifactId>
+                <version>8.1.00</version>
+                <scope>system</scope>
+                <systemPath>${project.basedir}/lib/arapiext-8.1.00.jar</systemPath>
+            </dependency>
+            <dependency>
+                <groupId>arlibs</groupId>
+                <artifactId>arutil</artifactId>
+                <version>8.1.00</version>
+                <scope>system</scope>
+                <systemPath>${project.basedir}/lib/arutil-8.1.00.jar</systemPath>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.9.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.googlecode.json-simple</groupId>
+                <artifactId>json-simple</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>1.10</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>2.6</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-text</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>2.11.0</version>
+            </dependency>
+            <dependency>
+                <groupId>log4j</groupId>
+                <artifactId>log4j</artifactId>
+                <version>1.2.17</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <!--LMA:: END-->
+</project>

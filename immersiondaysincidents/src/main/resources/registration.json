@@ -1,0 +1,63 @@
+{
+    "name": "Immersion Days Incidents",
+    "description": "Immersion Days Incidents",
+    "img": "./img.png",
+    "version": "0.0.2",
+    "compatibility": "0.0.2",
+    "authorization": {
+        "type": "NONE",
+        "none": {
+            "instanceUrl": "${configuration.url}",
+            "callbackURL": "https://integrate-demo2.onbmc.com/auth/immersiondaysincidents/callback"
+        }
+    },
+    "category": "Productivity",
+    "configuration": {
+        "name": "Configuration",
+        "description": "Configuration",
+        "parameters": [
+            {
+                "type": "url",
+                "required": true,
+                "name": "Url",
+                "description": "",
+                "systemName": "url"
+            }
+        ]
+    },
+    "meta": {
+        "instanceUrl": "${configuration.url}",
+        "extraParameters": []
+    },
+    "productionConfig": {
+        "instance": "",
+        "username": "",
+        "configIsValid": false
+    },
+    "triggers": [],
+    "actions": [
+        {
+            "fields": [],
+            "output": [
+                {
+                    "type": "string",
+                    "required": true,
+                    "name": "all incidents"
+                }
+            ],
+            "meta": {
+                "url": "",
+                "method": ""
+            },
+            "name": "Getting_Incidents",
+            "description": "Getting Incidents",
+            "objectName": "Getting_Incidents"
+        }
+    ],
+    "lookups": [],
+    "connectorType": "java",
+    "lowerCaseName": "immersiondaysincidents",
+    "lowerCaseNameCapitalized": "ImmersionDaysIncidents",
+    "className": "com.bmc.panama.ImmersionDaysIncidentsConnector",
+    "additionalJars": ["lib/arapi-8.1.00.jar", "lib/arapiext-8.1.00.jar", "lib/arutil-8.1.00.jar"]
+}

@@ -1,0 +1,3 @@
+#execute_action CreateObject data=new_object
+#trigger_poll ObjectUpdated conditions=conditions1
+#do_lookup ListObjects params=params1
